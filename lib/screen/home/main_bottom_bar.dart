@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:idealdukan/screen/home/home_fragment.dart';
 
 import 'package:idealdukan/utils/app_colors.dart';
-
-import 'home_screen.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class MainBottomBar extends StatefulWidget {
@@ -21,7 +19,7 @@ class _MainScreenState extends State<MainBottomBar> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+    HomeFragment(),
     Text(
       'Index 1: Business',
       style: optionStyle,
@@ -53,12 +51,14 @@ class _MainScreenState extends State<MainBottomBar> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       // FOR SIGN OUT
-      floatingActionButton: FloatingActionButton( child: const Icon(Icons.logout),
-          backgroundColor: Colors.green,onPressed: () async {
-        // await _auth.signOut();
-        // Navigator.pushReplacement(context,
-        //     MaterialPageRoute(builder: (context) => const MobileOtpAuth()));
-      }),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.logout),
+          backgroundColor: Colors.green,
+          onPressed: () async {
+            // await _auth.signOut();
+            // Navigator.pushReplacement(context,
+            //     MaterialPageRoute(builder: (context) => const MobileOtpAuth()));
+          }),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,

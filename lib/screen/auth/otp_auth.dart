@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:idealdukan/screen/auth/sign_up.dart';
 import 'package:idealdukan/screen/home/main_bottom_bar.dart';
 
 //FOR CHANGING SCREEN MOBILE NUMBER TO OTP
@@ -23,7 +24,7 @@ class _OtpAuthenticationState extends State<OtpAuthentication> {
       MobileVerificationState.showMobileNumberState;
 
 //   TAKING TEXT FIELD VALUE
-  final phoneController = TextEditingController();
+  final phoneController = TextEditingController(text: "+91");
   final otpController = TextEditingController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -89,7 +90,7 @@ class _OtpAuthenticationState extends State<OtpAuthentication> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
             child: TextFormField(
-                controller: phoneController,
+              controller: phoneController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Not Empty';
@@ -97,10 +98,11 @@ class _OtpAuthenticationState extends State<OtpAuthentication> {
                 return null;
               },
               obscureText: false,
+              
               decoration: InputDecoration(
                   fillColor: Colors.grey[100],
                   filled: true,
-                  hintText: "Enter Mobile Number",
+                  hintText: "  Enter Phone Number",
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.circular(10.0),
@@ -166,12 +168,18 @@ class _OtpAuthenticationState extends State<OtpAuthentication> {
               ),
             ),
           ),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SignUpPage()));
+              },
+              child: const Text("Don't have an account ? SignUp"))
         ],
       ),
     );
   }
 
-  // THIS WIDGET FOR MOBILE NUMBER ENTERING
+  // THIS WIDGET FOR MOBILE OTP ENTERING
   getMobileOtpWidget(context) {
     return Form(
       key: _formKey,
@@ -182,7 +190,7 @@ class _OtpAuthenticationState extends State<OtpAuthentication> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
             child: TextFormField(
-                controller: otpController,
+              controller: otpController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Not Empty';

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:idealdukan/data/detail-screem-data/detail-screen-data.dart';
 import 'package:idealdukan/models/single_product_model.dart';
-import 'package:idealdukan/screen/item_widgets/single_product_data.dart';
 import 'package:idealdukan/styles/deatils_screen_style.dart';
 import 'package:idealdukan/utils/app_colors.dart';
 import 'package:idealdukan/utils/drop_button.dart';
-import 'package:idealdukan/utils/routes.dart';
-
-
 
 class DetailScreen extends StatefulWidget {
   final SingleProductModel data;
@@ -77,7 +72,7 @@ class _DetailScreenState extends State<DetailScreen> {
             height: 5,
           ),
           Text(
-            widget.data.productModel,
+            widget.data.productType,
             style: DetailScreenStylies.productModelStyle,
           ),
         ],
@@ -282,39 +277,39 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  buildBottomGridView() {
-    return SizedBox(
-      height: 240,
-      child: GridView.builder(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        primary: true,
-        itemCount: detailScreenData.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 1.5,
-        ),
-        itemBuilder: (context, index) {
-          var data = detailScreenData[index];
-          return SingleProductData(
-            onPressed: () {
-              PageRouting().goToNextPage(
-                context: context,
-                navigateTo: DetailScreen(
-                  data: data,
-                ),
-              );
-            },
-            productImage: data.productImage,
-            productModel: data.productModel,
-            productName: data.productName,
-            productOldPrice: data.productOldPrice,
-            productPrice: data.productPrice,
-          );
-        },
-      ),
-    );
-  }
+  // buildBottomGridView() {
+  //   return SizedBox(
+  //     height: 240,
+  //     child: GridView.builder(
+  //       scrollDirection: Axis.horizontal,
+  //       shrinkWrap: true,
+  //       primary: true,
+  //       itemCount: detailScreenData.length,
+  //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+  //         crossAxisCount: 1,
+  //         childAspectRatio: 1.5,
+  //       ),
+  //       itemBuilder: (context, index) {
+  //         var data = detailScreenData[index];
+  //         return SingleProductData(
+  //           onPressed: () {
+  //             PageRouting().goToNextPage(
+  //               context: context,
+  //               navigateTo: DetailScreen(
+  //                 data: data,
+  //               ),
+  //             );
+  //           },
+  //           productImage: data.productImage,
+  //           productModel: data.productModel,
+  //           productName: data.productName,
+  //           productOldPrice: data.productOldPrice,
+  //           productPrice: data.productPrice,
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
 
   buildMayLikeYou() {
     return const ListTile(
@@ -342,7 +337,7 @@ class _DetailScreenState extends State<DetailScreen> {
           buildAddtoCart(),
           buildExpensionTile(),
           buildMayLikeYou(),
-          buildBottomGridView(),
+          // buildBottomGridView(),
         ],
       ),
     );

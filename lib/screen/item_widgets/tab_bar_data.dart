@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:idealdukan/data/home-page-data/home-page-data.dart';
 import 'package:idealdukan/models/single_product_model.dart';
 import 'package:idealdukan/screen/item_widgets/single_product_data.dart';
 
@@ -10,6 +9,10 @@ class TabBarData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_typing_uninitialized_variables
+    var sigleProductData;
+
+    
     return GridView.builder(
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
@@ -22,7 +25,7 @@ class TabBarData extends StatelessWidget {
           return SingleProductData(
               productName: data.productName,
               productImage: data.productImage,
-              productModel: data.productModel,
+              productModel: data.productType,
               productOldPrice: data.productOldPrice,
               productPrice: data.productPrice,
               onPressed: () {});
