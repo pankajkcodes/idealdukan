@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idealdukan/screen/item_widgets/single_product_data.dart';
+import 'package:idealdukan/screen/item_widgets/single_product_widget.dart';
 
 class HomeFragment extends StatelessWidget {
   const HomeFragment({Key? key}) : super(key: key);
