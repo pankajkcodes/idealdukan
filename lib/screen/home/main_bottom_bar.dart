@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:idealdukan/screen/home/home_fragment.dart';
+import 'package:idealdukan/styles/home_screen_style.dart';
 
 import 'package:idealdukan/utils/app_colors.dart';
 
@@ -47,6 +48,7 @@ class _MainScreenState extends State<MainBottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -92,4 +94,39 @@ class _MainScreenState extends State<MainBottomBar> {
       ),
     );
   }
+}
+
+// FOR TOOLBAR CODE
+AppBar buildAppBar() {
+  return AppBar(
+    //FOR UPPER TAB
+    backgroundColor: Colors.transparent,
+    elevation: 0.0,
+    centerTitle: true,
+    actions: [
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(Icons.search),
+        color: AppColors.baseBlackColor,
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(Icons.light_mode),
+        color: AppColors.baseBlackColor,
+      )
+    ],
+    title: Column(
+      children: const [
+        Text(
+          "Ideal Dukan",
+          style: HomeScreenStyles.appBarUpperTitleStyle,
+        ),
+        Text(
+          "Shopping",
+          style: HomeScreenStyles.appBarBottomTitleStyle,
+        )
+      ],
+      //FOR ADVERTISEMENT CODE
+    ),
+  );
 }
