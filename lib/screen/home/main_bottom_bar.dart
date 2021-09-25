@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:idealdukan/screen/home/home_fragment.dart';
+import 'package:idealdukan/screen/fragments/cart_fragment.dart';
+import 'package:idealdukan/screen/fragments/cat_fragment.dart';
+import 'package:idealdukan/screen/fragments/profile_fragment.dart';
+import 'package:idealdukan/screen/fragments/home_fragment.dart';
 import 'package:idealdukan/styles/home_screen_style.dart';
 
 import 'package:idealdukan/utils/app_colors.dart';
@@ -17,26 +20,11 @@ class _MainScreenState extends State<MainBottomBar> {
   // final _auth = FirebaseAuth.instance;
 
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeFragment(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: cart',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Favourite',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Person',
-      style: optionStyle,
-    ),
+    CategoryFragment(),
+    CartFrgamnet(),
+    ProfileFragment()
   ];
 
   void _onItemTapped(int index) {
@@ -52,44 +40,32 @@ class _MainScreenState extends State<MainBottomBar> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      // FOR SIGN OUT
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.logout),
-          backgroundColor: Colors.green,
-          onPressed: () async {
-            // await _auth.signOut();
-            // Navigator.pushReplacement(context,
-            //     MaterialPageRoute(builder: (context) => const MobileOtpAuth()));
-          }),
+    
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
-        showSelectedLabels: false,
+        showSelectedLabels: true,
         unselectedItemColor: AppColors.baseBlack10Color,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
+            icon: Icon(Icons.home_sharp),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.grid_view_outlined),
-            label: '',
+            icon: Icon(Icons.grid_view_rounded),
+            label: 'Category',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_outlined),
-            label: 'School',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: '',
+            label: 'Carts',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: '',
+            label: 'My Account',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.baseBlackColor,
+        selectedItemColor: AppColors.basePrimaryColor,
         onTap: _onItemTapped,
       ),
     );
@@ -110,7 +86,9 @@ AppBar buildAppBar() {
         color: AppColors.baseBlackColor,
       ),
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          
+        },
         icon: const Icon(Icons.light_mode),
         color: AppColors.baseBlackColor,
       )

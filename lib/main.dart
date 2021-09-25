@@ -34,17 +34,12 @@ class InitializerWidget extends StatefulWidget {
 }
 
 class _InitializerWidgetState extends State<InitializerWidget> {
-
   late FirebaseAuth _auth;
-
-  User ? _user;
-
+  User? _user;
   bool isLoading = true;
-
 
   @override
   void initState() {
- 
     super.initState();
     _auth = FirebaseAuth.instance;
     _user = _auth.currentUser;
@@ -53,10 +48,14 @@ class _InitializerWidgetState extends State<InitializerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading ? const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    ) : _user == null ? const OtpAuthentication() : const MainBottomBar();
+    return isLoading
+        ? const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : _user == null
+            ? const OtpAuthentication()
+            : const MainBottomBar();
   }
 }

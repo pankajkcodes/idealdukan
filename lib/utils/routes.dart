@@ -1,10 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-class PageRouting {
-  goToNextPage({required BuildContext context, required Widget navigateTo}) {
-    return Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => navigateTo),
-    );
-  }
+class MyRoutes {
+  static String loginRoute = "/login";
+  static String homeRoute = "/home";
 }
