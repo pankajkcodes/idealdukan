@@ -9,7 +9,7 @@ class HomeScreenStyles {
       TextStyle(color:AppColors.baseBlackColor, fontWeight: FontWeight.bold);
 
   static const TextStyle appBarBottomTitleStyle =
-      TextStyle(color:AppColors.basePrimaryColor, 
+      TextStyle(color:AppColors.primaryColor, 
     
       fontSize: 11);
 }

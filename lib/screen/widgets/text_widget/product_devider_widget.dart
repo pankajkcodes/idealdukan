@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:idealdukan/utils/app_colors.dart';
 
 class ProductDeviderWidget extends StatelessWidget {
@@ -25,7 +26,9 @@ class ProductDeviderWidget extends StatelessWidget {
             "Show All",
             style: TextStyle(
               fontSize: 15,
-              color: AppColors.basePrimaryColor,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryColor,
             ),
           )
         ],

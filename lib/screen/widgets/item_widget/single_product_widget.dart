@@ -7,25 +7,24 @@ class SingleProductWidget extends StatelessWidget {
   final String productType;
   final double productPrice;
   final double productOldPrice;
-  final Function onPressed;
 
-  const SingleProductWidget(
-      {Key? key,
-      required this.productImage,
-      required this.productName,
-      required this.productType,
-      required this.productPrice,
-      required this.productOldPrice,
-      required this.onPressed})
-      : super(key: key);
+  const SingleProductWidget({
+    Key? key,
+    required this.productImage,
+    required this.productName,
+    required this.productType,
+    required this.productPrice,
+    required this.productOldPrice,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
         margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.transparent,
+          color: AppColors.basewhite10Color,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Column(
@@ -37,34 +36,42 @@ class SingleProductWidget extends StatelessWidget {
               width: double.infinity,
               alignment: Alignment.topRight,
               decoration: BoxDecoration(
-                  color: AppColors.baseGrey10Color,
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                       fit: BoxFit.fill, image: NetworkImage(productImage))),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.favorite,
-                    size: 25,
-                    color: Colors.redAccent,
-                  )),
+              // child: IconButton(
+              //     onPressed: () {},
+              //     icon: const Icon(
+              //       Icons.favorite,
+              //       size: 25,
+              //       color: Colors.redAccent,
+              //     )),
             )),
-            Expanded(
-                child: Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                const SizedBox(
+                  height: 5,
+                ),
                 Text(
                   productName,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 Text(
                   productType,
                   style: const TextStyle(
                       color: AppColors.baseDarkPinkColor,
                       overflow: TextOverflow.ellipsis),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Row(
                   children: [
@@ -87,7 +94,7 @@ class SingleProductWidget extends StatelessWidget {
                   ],
                 )
               ],
-            ))
+            )
           ],
         ),
       ),

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const basePrimaryColor = Color(0xff368de9);
+  static const primaryColor = Color(0xffff671c);
+  static const btnSucessColor = Color(0xff23bd66);
+  static const btnDangerColor = Color(0xff23bd66);
+  static const basewhite10Color = Color(0xffF6F6F6);
+
   static const baseDarkPinkColor = Color(0xff6930c3);
   static const baseLightPinkColor = Color(0xff9775fa);
-  static const baseDarkGreenColor = Color(0xff23bd66);
+
   static const baseLightGreenColor = Color(0xff5dd136);
   static const baseDarkOrangeColor = Color(0xffff671c);
   static const baseLightOrangeColor = Color(0xffffa601);
@@ -20,5 +24,4 @@ class AppColors {
   static const baseGrey20Color = Color(0xffe6e6e7);
   static const baseGrey10Color = Color(0xfff6f6f6);
   static const baseWhiteColor = Color(0xffffffff);
-  static const basewhite60Color = Color(0xffF6F6F6);
 }

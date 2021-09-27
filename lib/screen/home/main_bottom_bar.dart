@@ -3,8 +3,6 @@ import 'package:idealdukan/screen/fragments/cart_fragment.dart';
 import 'package:idealdukan/screen/fragments/cat_fragment.dart';
 import 'package:idealdukan/screen/fragments/profile_fragment.dart';
 import 'package:idealdukan/screen/fragments/home_fragment.dart';
-import 'package:idealdukan/styles/home_screen_style.dart';
-
 import 'package:idealdukan/utils/app_colors.dart';
 
 /// This is the stateful widget that the main application instantiates.
@@ -36,15 +34,13 @@ class _MainScreenState extends State<MainBottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-    
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: true,
-        unselectedItemColor: AppColors.baseBlack10Color,
+        unselectedItemColor: Colors.black54,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -57,7 +53,7 @@ class _MainScreenState extends State<MainBottomBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_outlined),
-            label: 'Carts',
+            label: 'My Carts',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -65,46 +61,9 @@ class _MainScreenState extends State<MainBottomBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.basePrimaryColor,
+        selectedItemColor: AppColors.primaryColor,
         onTap: _onItemTapped,
       ),
     );
   }
-}
-
-// FOR TOOLBAR CODE
-AppBar buildAppBar() {
-  return AppBar(
-    //FOR UPPER TAB
-    backgroundColor: Colors.transparent,
-    elevation: 0.0,
-    centerTitle: true,
-    actions: [
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.search),
-        color: AppColors.baseBlackColor,
-      ),
-      IconButton(
-        onPressed: () {
-          
-        },
-        icon: const Icon(Icons.light_mode),
-        color: AppColors.baseBlackColor,
-      )
-    ],
-    title: Column(
-      children: const [
-        Text(
-          "Ideal Dukan",
-          style: HomeScreenStyles.appBarUpperTitleStyle,
-        ),
-        Text(
-          "Shopping",
-          style: HomeScreenStyles.appBarBottomTitleStyle,
-        )
-      ],
-      //FOR ADVERTISEMENT CODE
-    ),
-  );
 }

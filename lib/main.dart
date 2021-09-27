@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Ideal Dukan',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.white
       ),
       home: const InitializerWidget(),
     );
