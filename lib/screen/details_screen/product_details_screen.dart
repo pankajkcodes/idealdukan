@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:idealdukan/data/home_page_data.dart';
 import 'package:idealdukan/models/single_product_model.dart';
 import 'package:idealdukan/screen/widgets/appbar_widget/details_appbar_widget.dart';
+import 'package:idealdukan/screen/widgets/item_widget/single_product_widget.dart';
 import 'package:idealdukan/styles/details_screen_style.dart';
 import 'package:idealdukan/utils/app_colors.dart';
 
 // ignore: must_be_immutable
-class ProductDetailsScreen extends StatelessWidget {
-
+class ProductDetailsScreen extends StatefulWidget {
   SingleProductModel data;
   ProductDetailsScreen({Key? key, required this.data}) : super(key: key);
 
   @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  @override
   Widget build(BuildContext context) {
+    var sizeController;
     return Scaffold(
       appBar: detailsAppBarWidget(),
       backgroundColor: AppColors.basewhite10Color,
@@ -27,23 +34,23 @@ class ProductDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  data.productName,
+                  widget.data.productName,
                   style: DetailScreenStylies.commpanyTitleStyle,
                 ),
                 Text(
-                  data.productType,
+                  widget.data.productType,
                   style: DetailScreenStylies.productTypeStyle,
                 ),
               ],
             ),
             trailing: Column(
               children: [
-                Text(data.productPrice.toString(),
+                Text(widget.data.productPrice.toString(),
                     style: DetailScreenStylies.productPriceStyle),
                 const SizedBox(
                   height: 5,
                 ),
-                Text(data.productOldPrice.toString(),
+                Text(widget.data.productOldPrice.toString(),
                     style: DetailScreenStylies.productOldPriceStyle),
               ],
             ),
@@ -55,7 +62,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    data.productImage,
+                    widget.data.productImage,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -64,25 +71,25 @@ class ProductDetailsScreen extends StatelessWidget {
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(top: 15, right: 15),
-                        child: Image.network(data.productImage),
+                        child: Image.network(widget.data.productImage),
                       ),
                     ),
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(top: 15, right: 15),
-                        child: Image.network(data.productSecondImage),
+                        child: Image.network(widget.data.productSecondImage),
                       ),
                     ),
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(top: 15, right: 15),
-                        child: Image.network(data.productThirdImage),
+                        child: Image.network(widget.data.productThirdImage),
                       ),
                     ),
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(top: 15, right: 15),
-                        child: Image.network(data.productFourImage),
+                        child: Image.network(widget.data.productFourImage),
                       ),
                     ),
                   ],
@@ -91,8 +98,66 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
           ),
           Row(
-              //FOR DROPDOWN BUTTON
+            //FOR DROPDOWN BUTTON
+            children: [
+              Expanded(
+                child: DropdownButtonFormField<String>(
+                  value: sizeController,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  hint: const Text(
+                    "Size",
+                    style: DetailScreenStylies.productDropDownValueStyle,
+                  ),
+                  items: ["M", "L", "S", "XL", "XXL"]
+                      .map(
+                        (e) => DropdownMenuItem(child: Text(e), value: e),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      sizeController = value;
+                    });
+                  },
+                ),
               ),
+              Expanded(
+                child: DropdownButtonFormField<String>(
+                  value: sizeController,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  hint: const Text(
+                    "Color",
+                    style: DetailScreenStylies.productDropDownValueStyle,
+                  ),
+                  items: [
+                    "red",
+                    "white",
+                    "pink",
+                  ]
+                      .map(
+                        (e) => DropdownMenuItem(child: Text(e), value: e),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      sizeController = value;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: MaterialButton(
@@ -110,7 +175,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
           ExpansionTile(
             title: const Text(
-              "description",
+              "Description",
               style: DetailScreenStylies.descriptionTextStyle,
             ),
             children: [
@@ -120,9 +185,72 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
               )
             ],
-          )
+          ),
+          buildMayLikeYou(),
+          buildBottomGridView(),
         ],
       ),
     );
   }
+}
+
+buildExpensionTileRow({required String firstTitle, required String secTitle}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        firstTitle,
+        // ".\t\tMaterial",
+        style: const TextStyle(
+          fontSize: 18.60,
+        ),
+      ),
+      Text(
+        secTitle,
+        // "84%\tnylon",
+        style: const TextStyle(
+          fontSize: 18.60,
+        ),
+      ),
+    ],
+  );
+}
+
+buildBottomGridView() {
+  return SizedBox(
+    height: 240,
+    child: GridView.builder(
+      scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
+      primary: true,
+      itemCount: singleProductData.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 1,
+        childAspectRatio: 1.5,
+      ),
+      itemBuilder: (context, index) {
+        var data = singleProductData[index];
+        return SingleProductWidget(
+          productImage: data.productImage,
+          productType: data.productType,
+          productName: data.productName,
+          productOldPrice: data.productOldPrice,
+          productPrice: data.productPrice,
+        );
+      },
+    ),
+  );
+}
+
+buildMayLikeYou() {
+  return ListTile(
+    leading: Text(
+      "You may also like",
+      style: DetailScreenStylies.youmayalsolikeTextStyle,
+    ),
+    trailing: Text(
+      "Show All",
+      style: DetailScreenStylies.showAllTextStyle,
+    ),
+  );
 }
