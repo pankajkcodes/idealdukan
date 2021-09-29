@@ -11,9 +11,9 @@ class SingleCartItem extends StatefulWidget {
 class _SingleCartItemState extends State<SingleCartItem> {
   @override
   Widget build(BuildContext context) {
-    var sizeController;
-    var colorController;
-    var quantityController;
+    String? sizeController;
+    String? colorController;
+    String? quantityController;
     return Card(
       child: SizedBox(
         height: 200,

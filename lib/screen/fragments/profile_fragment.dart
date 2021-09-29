@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:idealdukan/screen/widgets/appbar_widget/profile_app_bar.dart';
+
 import 'package:idealdukan/utils/app_colors.dart';
 
 class ProfileFragment extends StatelessWidget {
@@ -9,7 +9,22 @@ class ProfileFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: profileAppBarWidget(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "Account",
+          style: TextStyle(
+            color: AppColors.baseBlackColor,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.mode_edit_sharp),
+            color: AppColors.baseBlackColor,
+          ),
+        ],
+      ),
       body: ListView(physics: const BouncingScrollPhysics(), children: [
         Container(
           height: 200,
