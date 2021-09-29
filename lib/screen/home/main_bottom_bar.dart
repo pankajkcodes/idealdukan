@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:idealdukan/screen/fragments/cart_fragment.dart';
-import 'package:idealdukan/screen/fragments/cat_fragment.dart';
-import 'package:idealdukan/screen/fragments/profile_fragment.dart';
+import 'package:idealdukan/screen/fragments/category_fragment.dart';
 import 'package:idealdukan/screen/fragments/home_fragment.dart';
+import 'package:idealdukan/screen/fragments/profile_fragment.dart';
 import 'package:idealdukan/utils/app_colors.dart';
 
 /// This is the stateful widget that the main application instantiates.

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:idealdukan/screen/widgets/appbar_widget/mycart_appbar_widget.dart';
 import 'package:idealdukan/screen/widgets/item_widget/cart_item.dart';
 import 'package:idealdukan/utils/app_colors.dart';
 
@@ -17,7 +16,9 @@ class _CartFrgamnetState extends State<CartFrgamnet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myCartAppBarWidget(),
+      appBar: AppBar(
+        title: const Text("Your Cart"),
+      ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
